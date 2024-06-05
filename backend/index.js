@@ -399,11 +399,12 @@ app.get('/allorders', async (req, res)=>{
     res.send(orders);
 });
 
-app.listen(port, (error)=>{
-    if(!error){
-        console.log("Server running on port: "+port);
+const server = app.listen(port, (error) => {
+    if (!error) {
+      console.log("Server running on port: " + port);
+    } else {
+      console.log("Error: " + error);
     }
-    else{
-        console.log("Error: "+error);
-    }
-});
+  });
+
+module.exports = { app, server };
